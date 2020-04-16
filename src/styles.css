@@ -37,3 +37,13 @@ div li button {
   margin: 0 15px;
   background: #ca4949;
 }
+
+ul span{
+  margin-left: 5px;
+  font-size: large;
+  color: rgb(247, 4, 4);
+}
+
+svg:hover{
+  color:red
+}
