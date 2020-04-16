@@ -20,7 +20,7 @@ function App() {
     const response = await api.post('repositories',{
       "title": "Back-end com NodeJS",
       "url": "github.com",
-      "techs": "NodeJS"
+      "techs": "NodeJS",
     });
 
     setRepositories([...repositories, response.data]);
@@ -28,13 +28,14 @@ function App() {
 
   async function handleRemoveRepository(id) {
     api.delete(`repositories/${id}`).then(response =>{
-      setRepositories(repositories.filter(repositore=>repositore._id !== id));
+      setRepositories(repositories.filter(repositore=>repositore.id !== id));
     });
   }
 
   async function handleAddLike(id){
     api.post(`repositories/${id}/like`).then(response =>{
-      like>0?setLike(like+1):setLike(1);setLike('');
+      like>0?setLike(like+1):setLike(1);
+      setLike('');
     })
 
     
@@ -44,16 +45,16 @@ function App() {
     <div>
       <ul data-testid="repository-list">
         {
-          repositories.map(repositore =>(
-            <li key={repositore._id}>
+          repositories.map(repositore =>
+            <li key={repositore.id}>
               {repositore.title}<span>{(repositore.likes)>0?repositore.likes:like}</span>
-              <IoIosHeartEmpty onClick={()=>handleAddLike(repositore._id)} />
+              <IoIosHeartEmpty onClick={()=>handleAddLike(repositore.id)} />
 
-              <button onClick={() => handleRemoveRepository(repositore._id)}>
+              <button onClick={() => handleRemoveRepository(repositore.id)}>
                 Remover
               </button>
             </li>
-          ))
+          )
         }
       </ul>
 

@@ -46,7 +46,7 @@ describe("App component", () => {
 
     apiMock.onGet("repositories").reply(200, [
       {
-        _id: "123",
+        id: "123",
         url: "https://github.com/josepholiveira",
         title: "Desafio ReactJS",
         techs: ["React", "Node.js"],
